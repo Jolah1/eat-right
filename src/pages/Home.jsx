@@ -7,8 +7,9 @@ import React from 'react'
 function Home() {
   return (
     <div>
-        <Popular />
-        <Veggie />
+      <Veggie />
+      <Popular />
+        
     </div>
   )
 }

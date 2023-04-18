@@ -34,7 +34,7 @@ const [popular, setPopular] = useState([]);
               <h3>Popular Picks</h3>
 
               <Splide options={{
-                perPage: 3,
+                perPage: 4,
                 arrows: false,
                 pagination: false,
                 drag: 'free',
