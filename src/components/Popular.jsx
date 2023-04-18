@@ -19,7 +19,7 @@ const [popular, setPopular] = useState([]);
       if(check){
         setPopular(JSON.parse(check));
       }else {
-        const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10`);
+        const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`);
         const data = await api.json();
 
         localStorage.setItem('popular', JSON.stringify(data.recipes));
@@ -34,7 +34,7 @@ const [popular, setPopular] = useState([]);
               <h3>Popular Picks</h3>
 
               <Splide options={{
-                perPage: 4,
+                perPage: 3,
                 arrows: false,
                 pagination: false,
                 drag: 'free',
@@ -60,7 +60,7 @@ const [popular, setPopular] = useState([]);
 }
 
 const Wrapper = styled.div`
-  margin: 4rem 0rem;
+margin: 4rem 0rem;
 `;
 
 const Card = styled.div`
@@ -68,6 +68,7 @@ const Card = styled.div`
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
+  
 
   img{
     border-radius: 2rem;
