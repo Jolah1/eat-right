@@ -15,6 +15,7 @@ function Recipe() {
     const data = await fetch(`https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`);
     const detailData = await data.json();
     setDetails(detailData);
+    console.log(detailData);
   };
 
   useEffect(() => {
@@ -44,7 +45,7 @@ function Recipe() {
         </ul>
 
         )}
-        ;
+        
       </Info>
     </DetailWrapper>
   );
@@ -56,7 +57,7 @@ margin-bottom: 5rem;
 display: flex;
 
 .active{
-  background: linear-gradient(35deg, #494949, #313131);
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
 }
 
