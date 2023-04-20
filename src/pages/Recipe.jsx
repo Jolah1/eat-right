@@ -19,7 +19,7 @@ function Recipe() {
   };
 
   useEffect(() => {
-    fetchDetails();
+    fetchDetails();  // eslint-disable-next-line
   }, [params.name]);
 
   return (
