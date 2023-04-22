@@ -42,7 +42,7 @@ function Veggie() {
 
 
               }}>
-                {veggie.map((recipe) => {
+                {!veggie.length ? "loading": veggie.map((recipe) => {
                   return(
                     <SplideSlide key={recipe.id}>
                   <Card>

@@ -29,7 +29,7 @@ function Cuisine() {
      transition={{duration: 0.5}}
      >
       
-     {cuisine.map((item) => {
+     {!cuisine.length ? "loading": cuisine.map((item) => {
 
       return(
         <Card key={item.id}>

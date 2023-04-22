@@ -39,7 +39,7 @@ function Recipe() {
         )}
         {activeTab === 'ingredients' && (
           <ul>
-          {details.extendedIngredients.map((ingredient) => (
+          {!Object.keys(details.extendedIngredients).length ? "loading": details.extendedIngredients.map((ingredient) => (
           <li key={ingredient.id}>{ingredient.original}</li>
           ))}
         </ul>
@@ -82,12 +82,13 @@ background: white;
 border: 2px solid black;
 margin-right: 2rem;
 font-weight: 600;
-
+height: 60px;
 `;
 
 const Info = styled.div`
-margin-left: 10rem;
-
+display: flex;
+width: 400px;
+margin-left: 20px;
 `;
 
 export default Recipe;

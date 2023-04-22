@@ -20,7 +20,7 @@ function Searched() {
      }, [params.search]); 
   return (
     <Grid>
-      {searchedRecipes.map((item) => {
+      { !searchedRecipes.length ? "loading": searchedRecipes.map((item) => {
         return(
             <Card key={item.id}>
               <Link to={"/recipe/" + item.id}>

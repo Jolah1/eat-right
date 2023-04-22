@@ -36,15 +36,15 @@ const [popular, setPopular] = useState([]);
               <h3>Popular Picks</h3>
 
               <Splide options={{
-                perPage: 4,
+                perPage: 3,
                 arrows: false,
                 pagination: false,
                 drag: 'free',
-                gap: '5rem',
+                gap: '1rem',
 
 
               }}>
-                {popular.map((recipe) => {
+                {!popular.length ? "loading": popular.map((recipe) => {
                   return(
                     <SplideSlide key={recipe.id}>
                   <Card>
@@ -68,7 +68,7 @@ margin: 4rem 0rem;
 `;
 
 const Card = styled.div`
-  min-height: 15rem;
+  min-height: 25rem;
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
