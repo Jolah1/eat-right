@@ -60,7 +60,9 @@ display: flex;
   background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
 }
-
+img {
+  border-radius: 2rem;
+}
 h2{
   margin-bottom: 2rem;
 }
@@ -68,6 +70,7 @@ h2{
 li {
   font-size: 1.2rem;
   line-height: 2.5rem;
+  
 }
 
 ul {
@@ -83,6 +86,7 @@ border: 2px solid black;
 margin-right: 2rem;
 font-weight: 600;
 height: 60px;
+margin-bottom: 2rem;
 `;
 
 const Info = styled.div`
