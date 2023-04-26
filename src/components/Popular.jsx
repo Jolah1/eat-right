@@ -9,6 +9,7 @@ import {Link} from 'react-router-dom';
 function Popular() {
 
 const [popular, setPopular] = useState([]);
+const [serverError, setServerError] = useState("");
 
   useEffect(() => {
     getPopular();
@@ -18,17 +19,31 @@ const [popular, setPopular] = useState([]);
 
       const check = localStorage.getItem('popular');
 
-      if(check){
+      if(check !== "undefined"){
         setPopular(JSON.parse(check));
       }else {
         const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10`);
         const data = await api.json();
 
         localStorage.setItem('popular', JSON.stringify(data.recipes));
+        if(data.status !== "failure"){
         setPopular(data.recipes);
+
+        } else {
+          setServerError(data.message);
+        }
         console.log(data.recipes);
       }
     };
+
+    if(serverError){
+      return(
+        <>
+        <h3>Server Error</h3>
+        <h5>{serverError}</h5>
+        </>
+      )
+    }
 
     return ( 
       <div>

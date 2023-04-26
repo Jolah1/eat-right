@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom';
 
 function Veggie() {
   const [veggie, setVeggie] = useState([]);
+  const [serverError, setServerError] = useState("");
 
   useEffect(() => {
     getVeggie();
@@ -15,18 +16,34 @@ function Veggie() {
     const getVeggie = async () => {
 
       const check = localStorage.getItem('veggie');
+  
+      if(check !== "undefined"){
 
-      if(check){
         setVeggie(JSON.parse(check));
       }else {
         const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10&tags=vegetarian`);
         const data = await api.json();
 
         localStorage.setItem('veggie', JSON.stringify(data.recipes));
+        if(data.status !== "failure") {
         setVeggie(data.recipes);
+
+        } else {
+          setServerError(data.message);
+        }
+        
         console.log(data.recipes);
-      }
+      } 
     };
+
+    if(serverError){
+      return(
+        <>
+        <h3>Server Error</h3>
+        <h5>{serverError}</h5>
+        </>
+      )
+    }
 
   return (
     <div>
