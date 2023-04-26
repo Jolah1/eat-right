@@ -9,7 +9,7 @@ function Recipe() {
 
   let params = useParams();
   const [details, setDetails] = useState({});
-  const [activeTab, setActiveTab] = useState('Instructions');
+  const [activeTab, setActiveTab] = useState('instructions');
 
   const fetchDetails = async () => {
     const data = await fetch(`https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`);
@@ -29,8 +29,10 @@ function Recipe() {
         <img src={details.image} alt="" />
       </div>
       <Info>
-        <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab('Instructions')}>Instructions</Button>
+        <Container>
+        <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab('instructions')}>Instructions</Button>
         <Button className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab('ingredients')}>Ingredients</Button>
+        </Container>
         {activeTab === 'instructions' && (
           <div>
           <h3 dangerouslySetInnerHTML={{ __html: details.summary}}></h3>
@@ -55,7 +57,6 @@ const DetailWrapper = styled.div`
 margin-top: 10rem;
 margin-bottom: 5rem;
 display: flex;
-
 .active{
   background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -66,13 +67,11 @@ img {
 h2{
   margin-bottom: 2rem;
 }
-
 li {
   font-size: 1.2rem;
   line-height: 2.5rem;
   
 }
-
 ul {
   margin-top: 2rem;
 }
@@ -93,6 +92,11 @@ const Info = styled.div`
 display: flex;
 width: 400px;
 margin-left: 20px;
+flex-direction: column;
+`;
+
+const Container = styled.div`
+display: flex;
 `;
 
 export default Recipe;
