@@ -67,6 +67,9 @@ img {
 h2{
   margin-bottom: 2rem;
 }
+h3 {
+  font-size: 1rem;
+}
 li {
   font-size: 1.2rem;
   line-height: 2.5rem;
@@ -74,6 +77,7 @@ li {
 }
 ul {
   margin-top: 2rem;
+  margin-left: 2rem;
 }
 `;
 
